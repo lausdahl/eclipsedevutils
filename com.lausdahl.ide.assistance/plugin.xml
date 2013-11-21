@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="com.lausdahl.ide.assistance.revearlInExplorer"
+            objectClass="java.lang.Object">
+         <action
+               class="com.lausdahl.ide.assistance.RevealInExplorerAction"
+               definitionId="com.lausdahl.ide.assistance.revealInExplorerCommand"
+               icon="icons/cview/open_folder.png"
+               id="com.lausdahl.ide.assistance.action1"
+               label="Reveal in Explorer"
+               menubarPath="com.lausdahl.ide.assistance.menu1/com.lausdahl.ide.assistance.separator1">
+         </action>
+         <menu
+               icon="icons/cview/advancedsettings.png"
+               id="com.lausdahl.ide.assistance.menu1"
+               label="IDE Assistance"
+               path="additions">
+            <separator
+                  name="com.lausdahl.ide.assistance.separator1">
+            </separator>
+         </menu>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="com.lausdahl.ide.assistance.javaprojectContribution"
+            objectClass="org.eclipse.jdt.core.IJavaProject">
+         <action
+               class="com.lausdahl.ide.assistance.UpdateClasspathAction"
+               icon="icons/cview/exec.png"
+               id="com.lausdahl.ide.assistance.updateClasspathAction"
+               label="Update classpath"
+               menubarPath="com.lausdahl.ide.assistance.menu1/com.lausdahl.ide.assistance.separator1">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="com.lausdahl.ide.assistance.category1"
+            defaultHandler="com.lausdahl.ide.assistance.RevealInExplorerHandler"
+            description="Reveal in Explorer"
+            id="com.lausdahl.ide.assistance.revealInExplorerCommand"
+            name="Reveal in Explorer">
+      </command>
+      <category
+            id="com.lausdahl.ide.assistance.category1"
+            name="IDE Assistance">
+      </category>
+     
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.lausdahl.ide.assistance.RevealInExplorerHandler"
+            commandId="com.lausdahl.ide.assistance.revealInExplorerCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.lausdahl.ide.assistance.revealInExplorerCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M3+Enter">
+      </key>
+   </extension>
+
+</plugin>
